@@ -1,0 +1,28 @@
+.jb-application-block-editor {
+    padding: 40px;
+    text-align: center;
+    background: #f5f5f5;
+    border: 2px dashed #ccc;
+    border-radius: 4px;
+}
+
+.jb-block-placeholder .dashicons {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #666;
+}
+
+.jb-block-placeholder h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.jb-block-placeholder p {
+    margin: 5px 0 0;
+    color: #666;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
