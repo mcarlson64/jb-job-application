@@ -31,10 +31,8 @@ class JB_Application_Handler {
      */
     public static function handle_submission() {
         // Verify nonce
-        $nonce = '';
-        if (isset($_POST['nonce'])) {
-            $nonce = sanitize_text_field(wp_unslash($_POST['nonce']));
-        }
+        $post_data = wp_unslash($_POST);
+        $nonce = isset($post_data['nonce']) ? sanitize_text_field($post_data['nonce']) : '';
 
         if (empty($nonce) || !wp_verify_nonce($nonce, 'jb_application_submit')) {
             wp_send_json_error(array(
@@ -57,10 +55,10 @@ class JB_Application_Handler {
         }
         
         // Validate required fields
-        $first_name = isset($_POST['first_name']) ? sanitize_text_field(wp_unslash($_POST['first_name'])) : '';
-        $last_name = isset($_POST['last_name']) ? sanitize_text_field(wp_unslash($_POST['last_name'])) : '';
-        $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
-        $phone = isset($_POST['phone']) ? sanitize_text_field(wp_unslash($_POST['phone'])) : '';
+        $first_name = isset($post_data['first_name']) ? sanitize_text_field($post_data['first_name']) : '';
+        $last_name = isset($post_data['last_name']) ? sanitize_text_field($post_data['last_name']) : '';
+        $email = isset($post_data['email']) ? sanitize_email($post_data['email']) : '';
+        $phone = isset($post_data['phone']) ? sanitize_text_field($post_data['phone']) : '';
         
         if (empty($first_name) || empty($last_name) || empty($email) || empty($phone)) {
             wp_send_json_error(array(
@@ -75,7 +73,8 @@ class JB_Application_Handler {
         }
         
         // Handle file upload
-        $file = isset($_FILES['resume']) ? wp_unslash($_FILES['resume']) : array();
+        $files_data = wp_unslash($_FILES);
+        $file = isset($files_data['resume']) ? $files_data['resume'] : array();
 
         if (empty($file) || !isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
             wp_send_json_error(array(

@@ -65,10 +65,8 @@ class JB_User_Roles {
      * Validate role field
      */
     public static function validate_role_field($errors, $sanitized_user_login, $user_email) {
-        $user_role = '';
-        if (isset($_POST['user_role'])) {
-            $user_role = sanitize_text_field(wp_unslash($_POST['user_role']));
-        }
+        $post_data = wp_unslash($_POST);
+        $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (empty($user_role)) {
             $errors->add('user_role_error', __('<strong>Error</strong>: Please select a role.', 'jb-job-application'));
@@ -82,10 +80,8 @@ class JB_User_Roles {
      * Set user role after registration
      */
     public static function set_user_role($user_id) {
-        $user_role = '';
-        if (isset($_POST['user_role'])) {
-            $user_role = sanitize_text_field(wp_unslash($_POST['user_role']));
-        }
+        $post_data = wp_unslash($_POST);
+        $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (!empty($user_role) && $user_role === 'applicant') {
             $user = new WP_User($user_id);
@@ -98,10 +94,8 @@ class JB_User_Roles {
      */
     public static function applicant_registration_redirect($redirect_to) {
         // Check if user was registered as applicant
-        $user_role = '';
-        if (isset($_POST['user_role'])) {
-            $user_role = sanitize_text_field(wp_unslash($_POST['user_role']));
-        }
+        $post_data = wp_unslash($_POST);
+        $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (!empty($user_role) && $user_role === 'applicant') {
             // Redirect to a page where the application block can be used
