@@ -58,6 +58,7 @@ class JB_User_Roles {
                 </select>
             </label>
         </p>
+        <?php wp_nonce_field('jb_user_role_register', 'jb_user_role_nonce'); ?>
         <?php
     }
     
@@ -66,6 +67,11 @@ class JB_User_Roles {
      */
     public static function validate_role_field($errors, $sanitized_user_login, $user_email) {
         $post_data = wp_unslash($_POST);
+        $nonce = isset($post_data['jb_user_role_nonce']) ? sanitize_text_field($post_data['jb_user_role_nonce']) : '';
+        if (empty($nonce) || !wp_verify_nonce($nonce, 'jb_user_role_register')) {
+            $errors->add('user_role_error', __('<strong>Error</strong>: Security check failed.', 'jb-job-application'));
+            return $errors;
+        }
         $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (empty($user_role)) {
@@ -81,6 +87,10 @@ class JB_User_Roles {
      */
     public static function set_user_role($user_id) {
         $post_data = wp_unslash($_POST);
+        $nonce = isset($post_data['jb_user_role_nonce']) ? sanitize_text_field($post_data['jb_user_role_nonce']) : '';
+        if (empty($nonce) || !wp_verify_nonce($nonce, 'jb_user_role_register')) {
+            return;
+        }
         $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (!empty($user_role) && $user_role === 'applicant') {
@@ -95,6 +105,10 @@ class JB_User_Roles {
     public static function applicant_registration_redirect($redirect_to) {
         // Check if user was registered as applicant
         $post_data = wp_unslash($_POST);
+        $nonce = isset($post_data['jb_user_role_nonce']) ? sanitize_text_field($post_data['jb_user_role_nonce']) : '';
+        if (empty($nonce) || !wp_verify_nonce($nonce, 'jb_user_role_register')) {
+            return $redirect_to;
+        }
         $user_role = isset($post_data['user_role']) ? sanitize_text_field($post_data['user_role']) : '';
 
         if (!empty($user_role) && $user_role === 'applicant') {
