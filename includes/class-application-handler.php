@@ -31,7 +31,12 @@ class JB_Application_Handler {
      */
     public static function handle_submission() {
         // Verify nonce
-        if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'jb_application_submit')) {
+        $nonce = '';
+        if (isset($_POST['nonce'])) {
+            $nonce = sanitize_text_field(wp_unslash($_POST['nonce']));
+        }
+
+        if (empty($nonce) || !wp_verify_nonce($nonce, 'jb_application_submit')) {
             wp_send_json_error(array(
                 'message' => __('Security check failed.', 'jb-job-application')
             ), 403);
@@ -52,10 +57,10 @@ class JB_Application_Handler {
         }
         
         // Validate required fields
-        $first_name = sanitize_text_field($_POST['first_name'] ?? '');
-        $last_name = sanitize_text_field($_POST['last_name'] ?? '');
-        $email = sanitize_email($_POST['email'] ?? '');
-        $phone = sanitize_text_field($_POST['phone'] ?? '');
+        $first_name = isset($_POST['first_name']) ? sanitize_text_field(wp_unslash($_POST['first_name'])) : '';
+        $last_name = isset($_POST['last_name']) ? sanitize_text_field(wp_unslash($_POST['last_name'])) : '';
+        $email = isset($_POST['email']) ? sanitize_email(wp_unslash($_POST['email'])) : '';
+        $phone = isset($_POST['phone']) ? sanitize_text_field(wp_unslash($_POST['phone'])) : '';
         
         if (empty($first_name) || empty($last_name) || empty($email) || empty($phone)) {
             wp_send_json_error(array(
@@ -70,15 +75,17 @@ class JB_Application_Handler {
         }
         
         // Handle file upload
-        if (empty($_FILES['resume']) || $_FILES['resume']['error'] !== UPLOAD_ERR_OK) {
+        $file = isset($_FILES['resume']) ? wp_unslash($_FILES['resume']) : array();
+
+        if (empty($file) || !isset($file['error']) || $file['error'] !== UPLOAD_ERR_OK) {
             wp_send_json_error(array(
                 'message' => __('Resume file is required.', 'jb-job-application')
             ), 400);
         }
         
         // Validate file type (PDF only)
-        $file = $_FILES['resume'];
-        $file_type = wp_check_filetype($file['name']);
+        $file_name = isset($file['name']) ? sanitize_file_name($file['name']) : '';
+        $file_type = wp_check_filetype($file_name);
         
         if ($file_type['ext'] !== 'pdf') {
             wp_send_json_error(array(
