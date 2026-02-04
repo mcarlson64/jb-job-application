@@ -17,6 +17,10 @@ A WordPress plugin that provides a complete job application system with applican
 1. Upload the `jb-job-application` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. The plugin will automatically create the "applicant" user role
+4. **Important**: Enable user registration in WordPress:
+   - Go to Settings → General
+   - Check "Anyone can register"
+   - Save changes
 
 ## Usage
 

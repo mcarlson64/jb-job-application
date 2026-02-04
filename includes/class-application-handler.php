@@ -111,7 +111,7 @@ class JB_Application_Handler {
         
         // Create application post
         $post_data = array(
-            'post_title' => sprintf('%s %s - %s', $first_name, $last_name, date('Y-m-d H:i:s')),
+            'post_title' => sprintf('%s %s - %s', $first_name, $last_name, current_time('mysql')),
             'post_type' => 'jb_application',
             'post_status' => 'publish',
             'post_author' => $user->ID,

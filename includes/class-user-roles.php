@@ -35,10 +35,9 @@ class JB_User_Roles {
      * Modify registration to support applicant role
      */
     public static function modify_registration() {
-        // Allow anyone to register
-        if (!get_option('users_can_register')) {
-            update_option('users_can_register', 1);
-        }
+        // Note: This plugin requires user registration to be enabled.
+        // Admins should enable this in Settings → General → Membership
+        // We don't automatically enable it to respect admin configuration.
         
         // Add role selection to registration
         add_action('register_form', array(__CLASS__, 'add_role_field'));

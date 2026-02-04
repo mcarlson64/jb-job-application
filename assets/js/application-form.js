@@ -95,7 +95,8 @@
         
         // File input change handler - show filename
         $('#jb-resume').on('change', function() {
-            var fileName = $(this).val().split('\\').pop();
+            var fileInput = this;
+            var fileName = fileInput.files.length > 0 ? fileInput.files[0].name : '';
             if (fileName) {
                 $(this).next('.jb-form-help').text('Selected: ' + fileName);
             }

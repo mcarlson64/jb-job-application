@@ -84,7 +84,7 @@ class JB_Application_Block {
     public static function render_block($attributes, $content) {
         ob_start();
         
-        // Check if user is logged in and is an applicant
+        // Check if user is logged in
         if (!is_user_logged_in()) {
             ?>
             <div class="jb-application-form-wrapper">
@@ -104,6 +104,7 @@ class JB_Application_Block {
             return ob_get_clean();
         }
         
+        // Get current user and check if they're an applicant
         $user = wp_get_current_user();
         if (!in_array('applicant', $user->roles)) {
             ?>
