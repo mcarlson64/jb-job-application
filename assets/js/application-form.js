@@ -13,8 +13,10 @@
         
         function showMessage(message, type) {
             var messageClass = type === 'success' ? 'notice-success' : 'notice-error';
-            var messageHtml = '<div class="notice ' + messageClass + '">' + message + '</div>';
-            messagesContainer.html(messageHtml);
+            var messageElement = $('<div>')
+                .addClass('notice ' + messageClass)
+                .text(message);
+            messagesContainer.empty().append(messageElement);
             
             // Scroll to message
             $('html, body').animate({

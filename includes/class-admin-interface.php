@@ -25,7 +25,7 @@ class JB_Admin_Interface {
     public static function add_meta_boxes() {
         add_meta_box(
             'jb_application_details',
-            __('Application Details', 'jb-job-application'),
+            esc_html__('Application Details', 'jb-job-application'),
             array(__CLASS__, 'render_details_meta_box'),
             'jb_application',
             'normal',
@@ -48,39 +48,39 @@ class JB_Admin_Interface {
         ?>
         <table class="form-table">
             <tr>
-                <th><strong><?php _e('Applicant User:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Applicant User:', 'jb-job-application'); ?></strong></th>
                 <td><?php echo esc_html($applicant->user_login); ?> (ID: <?php echo esc_html($applicant->ID); ?>)</td>
             </tr>
             <tr>
-                <th><strong><?php _e('First Name:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('First Name:', 'jb-job-application'); ?></strong></th>
                 <td><?php echo esc_html($first_name); ?></td>
             </tr>
             <tr>
-                <th><strong><?php _e('Last Name:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Last Name:', 'jb-job-application'); ?></strong></th>
                 <td><?php echo esc_html($last_name); ?></td>
             </tr>
             <tr>
-                <th><strong><?php _e('Email:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Email:', 'jb-job-application'); ?></strong></th>
                 <td><a href="mailto:<?php echo esc_attr($email); ?>"><?php echo esc_html($email); ?></a></td>
             </tr>
             <tr>
-                <th><strong><?php _e('Phone:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Phone:', 'jb-job-application'); ?></strong></th>
                 <td><?php echo esc_html($phone); ?></td>
             </tr>
             <tr>
-                <th><strong><?php _e('Resume:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Resume:', 'jb-job-application'); ?></strong></th>
                 <td>
                     <?php if ($resume_url): ?>
                         <a href="<?php echo esc_url($resume_url); ?>" target="_blank" class="button">
-                            <?php _e('Download Resume (PDF)', 'jb-job-application'); ?>
+                            <?php esc_html_e('Download Resume (PDF)', 'jb-job-application'); ?>
                         </a>
                     <?php else: ?>
-                        <?php _e('No resume uploaded', 'jb-job-application'); ?>
+                        <?php esc_html_e('No resume uploaded', 'jb-job-application'); ?>
                     <?php endif; ?>
                 </td>
             </tr>
             <tr>
-                <th><strong><?php _e('Submission Date:', 'jb-job-application'); ?></strong></th>
+                <th><strong><?php esc_html_e('Submission Date:', 'jb-job-application'); ?></strong></th>
                 <td><?php echo esc_html($submission_date); ?></td>
             </tr>
         </table>
@@ -93,12 +93,12 @@ class JB_Admin_Interface {
     public static function set_custom_columns($columns) {
         return array(
             'cb' => $columns['cb'],
-            'title' => __('Application', 'jb-job-application'),
-            'applicant_name' => __('Applicant Name', 'jb-job-application'),
-            'email' => __('Email', 'jb-job-application'),
-            'phone' => __('Phone', 'jb-job-application'),
-            'resume' => __('Resume', 'jb-job-application'),
-            'date' => __('Submitted', 'jb-job-application'),
+            'title' => esc_html__('Application', 'jb-job-application'),
+            'applicant_name' => esc_html__('Applicant Name', 'jb-job-application'),
+            'email' => esc_html__('Email', 'jb-job-application'),
+            'phone' => esc_html__('Phone', 'jb-job-application'),
+            'resume' => esc_html__('Resume', 'jb-job-application'),
+            'date' => esc_html__('Submitted', 'jb-job-application'),
         );
     }
     
@@ -126,7 +126,7 @@ class JB_Admin_Interface {
             case 'resume':
                 $resume_url = get_post_meta($post_id, '_jb_resume_url', true);
                 if ($resume_url) {
-                    echo '<a href="' . esc_url($resume_url) . '" target="_blank" class="button button-small">' . __('View PDF', 'jb-job-application') . '</a>';
+                    echo '<a href="' . esc_url($resume_url) . '" target="_blank" class="button button-small">' . esc_html__('View PDF', 'jb-job-application') . '</a>';
                 } else {
                     echo '—';
                 }

@@ -23,7 +23,7 @@ class JB_User_Roles {
     public static function create_applicant_role() {
         add_role(
             'applicant',
-            __('Applicant', 'jb-job-application'),
+            esc_html__('Applicant', 'jb-job-application'),
             array(
                 'read' => true,
                 'submit_application' => true,
@@ -51,10 +51,10 @@ class JB_User_Roles {
     public static function add_role_field() {
         ?>
         <p>
-            <label for="user_role"><?php _e('I want to register as:', 'jb-job-application'); ?><br />
+            <label for="user_role"><?php esc_html_e('I want to register as:', 'jb-job-application'); ?><br />
                 <select name="user_role" id="user_role" required>
-                    <option value=""><?php _e('Select Role', 'jb-job-application'); ?></option>
-                    <option value="applicant"><?php _e('Applicant (Job Seeker)', 'jb-job-application'); ?></option>
+                    <option value=""><?php esc_html_e('Select Role', 'jb-job-application'); ?></option>
+                    <option value="applicant"><?php esc_html_e('Applicant (Job Seeker)', 'jb-job-application'); ?></option>
                 </select>
             </label>
         </p>

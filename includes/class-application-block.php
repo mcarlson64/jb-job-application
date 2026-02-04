@@ -89,13 +89,13 @@ class JB_Application_Block {
             ?>
             <div class="jb-application-form-wrapper">
                 <div class="jb-application-notice jb-notice-warning">
-                    <p><?php _e('You must be logged in as an applicant to submit a job application.', 'jb-job-application'); ?></p>
+                    <p><?php esc_html_e('You must be logged in as an applicant to submit a job application.', 'jb-job-application'); ?></p>
                     <p>
                         <a href="<?php echo esc_url(wp_login_url(get_permalink())); ?>" class="button button-primary">
-                            <?php _e('Login', 'jb-job-application'); ?>
+                            <?php esc_html_e('Login', 'jb-job-application'); ?>
                         </a>
                         <a href="<?php echo esc_url(wp_registration_url()); ?>" class="button">
-                            <?php _e('Register as Applicant', 'jb-job-application'); ?>
+                            <?php esc_html_e('Register as Applicant', 'jb-job-application'); ?>
                         </a>
                     </p>
                 </div>
@@ -110,7 +110,7 @@ class JB_Application_Block {
             ?>
             <div class="jb-application-form-wrapper">
                 <div class="jb-application-notice jb-notice-error">
-                    <p><?php _e('Only users with the applicant role can submit job applications.', 'jb-job-application'); ?></p>
+                    <p><?php esc_html_e('Only users with the applicant role can submit job applications.', 'jb-job-application'); ?></p>
                 </div>
             </div>
             <?php
@@ -122,51 +122,51 @@ class JB_Application_Block {
         <div class="jb-application-form-wrapper">
             <form id="jb-application-form" class="jb-application-form" enctype="multipart/form-data">
                 <div class="jb-form-header">
-                    <h2><?php _e('Job Application Form', 'jb-job-application'); ?></h2>
-                    <p><?php _e('Please fill out all fields and upload your resume in PDF format.', 'jb-job-application'); ?></p>
+                    <h2><?php esc_html_e('Job Application Form', 'jb-job-application'); ?></h2>
+                    <p><?php esc_html_e('Please fill out all fields and upload your resume in PDF format.', 'jb-job-application'); ?></p>
                 </div>
                 
                 <div class="jb-form-messages"></div>
                 
                 <div class="jb-form-group">
                     <label for="jb-first-name">
-                        <?php _e('First Name', 'jb-job-application'); ?> <span class="required">*</span>
+                        <?php esc_html_e('First Name', 'jb-job-application'); ?> <span class="required">*</span>
                     </label>
                     <input type="text" id="jb-first-name" name="first_name" required />
                 </div>
                 
                 <div class="jb-form-group">
                     <label for="jb-last-name">
-                        <?php _e('Last Name', 'jb-job-application'); ?> <span class="required">*</span>
+                        <?php esc_html_e('Last Name', 'jb-job-application'); ?> <span class="required">*</span>
                     </label>
                     <input type="text" id="jb-last-name" name="last_name" required />
                 </div>
                 
                 <div class="jb-form-group">
                     <label for="jb-email">
-                        <?php _e('Email', 'jb-job-application'); ?> <span class="required">*</span>
+                        <?php esc_html_e('Email', 'jb-job-application'); ?> <span class="required">*</span>
                     </label>
                     <input type="email" id="jb-email" name="email" required />
                 </div>
                 
                 <div class="jb-form-group">
                     <label for="jb-phone">
-                        <?php _e('Phone Number', 'jb-job-application'); ?> <span class="required">*</span>
+                        <?php esc_html_e('Phone Number', 'jb-job-application'); ?> <span class="required">*</span>
                     </label>
                     <input type="tel" id="jb-phone" name="phone" required />
                 </div>
                 
                 <div class="jb-form-group">
                     <label for="jb-resume">
-                        <?php _e('Resume (PDF only, max 5MB)', 'jb-job-application'); ?> <span class="required">*</span>
+                        <?php esc_html_e('Resume (PDF only, max 5MB)', 'jb-job-application'); ?> <span class="required">*</span>
                     </label>
                     <input type="file" id="jb-resume" name="resume" accept=".pdf" required />
-                    <small class="jb-form-help"><?php _e('Please upload your resume in PDF format. Maximum file size: 5MB', 'jb-job-application'); ?></small>
+                    <small class="jb-form-help"><?php esc_html_e('Please upload your resume in PDF format. Maximum file size: 5MB', 'jb-job-application'); ?></small>
                 </div>
                 
                 <div class="jb-form-actions">
                     <button type="submit" class="button button-primary jb-submit-btn">
-                        <?php _e('Submit Application', 'jb-job-application'); ?>
+                        <?php esc_html_e('Submit Application', 'jb-job-application'); ?>
                     </button>
                 </div>
             </form>

@@ -21,17 +21,17 @@ class JB_Post_Types {
      */
     public static function register_post_type() {
         $labels = array(
-            'name' => __('Job Applications', 'jb-job-application'),
-            'singular_name' => __('Job Application', 'jb-job-application'),
-            'menu_name' => __('Job Applications', 'jb-job-application'),
-            'add_new' => __('Add New', 'jb-job-application'),
-            'add_new_item' => __('Add New Application', 'jb-job-application'),
-            'edit_item' => __('Edit Application', 'jb-job-application'),
-            'new_item' => __('New Application', 'jb-job-application'),
-            'view_item' => __('View Application', 'jb-job-application'),
-            'search_items' => __('Search Applications', 'jb-job-application'),
-            'not_found' => __('No applications found', 'jb-job-application'),
-            'not_found_in_trash' => __('No applications found in Trash', 'jb-job-application'),
+            'name' => esc_html__('Job Applications', 'jb-job-application'),
+            'singular_name' => esc_html__('Job Application', 'jb-job-application'),
+            'menu_name' => esc_html__('Job Applications', 'jb-job-application'),
+            'add_new' => esc_html__('Add New', 'jb-job-application'),
+            'add_new_item' => esc_html__('Add New Application', 'jb-job-application'),
+            'edit_item' => esc_html__('Edit Application', 'jb-job-application'),
+            'new_item' => esc_html__('New Application', 'jb-job-application'),
+            'view_item' => esc_html__('View Application', 'jb-job-application'),
+            'search_items' => esc_html__('Search Applications', 'jb-job-application'),
+            'not_found' => esc_html__('No applications found', 'jb-job-application'),
+            'not_found_in_trash' => esc_html__('No applications found in Trash', 'jb-job-application'),
         );
         
         $args = array(
