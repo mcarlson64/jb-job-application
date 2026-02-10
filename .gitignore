@@ -1,0 +1,21 @@
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Plugin development
+node_modules/
+vendor/
+*.log
+.DS_Store
+.idea/
+.vscode/
+*.zip
+
+# Temporary files
+/tmp/
+*.tmp
+*.bak

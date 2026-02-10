@@ -1,0 +1,132 @@
+.jb-application-form-wrapper {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.jb-form-header h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.jb-form-header p {
+    margin: 0 0 30px;
+    color: #666;
+}
+
+.jb-application-notice {
+    padding: 15px 20px;
+    margin: 20px 0;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.jb-notice-warning {
+    background: #fff8e5;
+    border-color: #f0b429;
+    color: #704900;
+}
+
+.jb-notice-error {
+    background: #ffe5e5;
+    border-color: #dc3232;
+    color: #5f2121;
+}
+
+.jb-notice-success {
+    background: #e5f8e5;
+    border-color: #46b450;
+    color: #1a4d1e;
+}
+
+.jb-form-group {
+    margin-bottom: 20px;
+}
+
+.jb-form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.jb-form-group .required {
+    color: #dc3232;
+}
+
+.jb-form-group input[type="text"],
+.jb-form-group input[type="email"],
+.jb-form-group input[type="tel"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.2s;
+}
+
+.jb-form-group input[type="text"]:focus,
+.jb-form-group input[type="email"]:focus,
+.jb-form-group input[type="tel"]:focus {
+    border-color: #2271b1;
+    outline: none;
+}
+
+.jb-form-group input[type="file"] {
+    width: 100%;
+    padding: 8px 0;
+}
+
+.jb-form-help {
+    display: block;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #666;
+}
+
+.jb-form-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.jb-submit-btn {
+    padding: 12px 30px !important;
+    font-size: 16px !important;
+    min-width: 200px;
+}
+
+.jb-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.jb-form-messages {
+    margin-bottom: 20px;
+}
+
+.jb-form-messages .notice {
+    padding: 12px 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.jb-form-messages .notice-success {
+    background: #e5f8e5;
+    border-left: 4px solid #46b450;
+    color: #1a4d1e;
+}
+
+.jb-form-messages .notice-error {
+    background: #ffe5e5;
+    border-left: 4px solid #dc3232;
+    color: #5f2121;
+}
+
+.jb-application-notice .button {
+    margin: 10px 10px 0 0;
+}
